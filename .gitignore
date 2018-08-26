@@ -108,3 +108,5 @@ config.py
 .DS_STORE
 .gitignore.swp
 build/
+
+*.swp
