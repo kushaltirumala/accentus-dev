@@ -3,6 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+<link rel="stylesheet" href="static/mini-event-calendar.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="static/mini-event-calendar.min.js"></script>
+
 </head>
 <body>
 
@@ -10,5 +17,30 @@
 Welcome {{session['username']}}
 </h1>
 
+
+<div id="calendar"></div>
+
+
+
 </body>
+<script>
+$(function() {
+    var myEvents = [{
+        title: "Event Title 1"
+    },
+    {
+        title: "Event Title 2",
+            date: 1519851600000,
+            link: "jqueryscript.net"
+    }
+    // more events here
+];
+
+    $("#calendar").MEC({
+        events: myEvents
+    });
+
+});
+
+</script>
 </html>
