@@ -1,8 +1,9 @@
 import getname as getname
-from flask import Flask, render_template, redirect, url_for, request, session
+from flask import Flask, render_template, redirect, url_for, request, session, jsonify
 from flask_sqlalchemy import SQLAlchemy
 import config
 from sqlalchemy.ext.declarative import declarative_base
+from college import get_college_list, get_college_info
 
 
 app = Flask(__name__)
@@ -65,6 +66,24 @@ def register():
         db.session.commit()
         return render_template('login.html')
     return render_template('register.html')
+
+
+@app.route("/college", methods=['GET'])
+def college():
+    college_param = request.args.get("college")
+    if college_param is None:
+        temp = get_college_list()
+        print(temp)
+        return jsonify(temp)
+    else:
+        print(college_param)
+        success = get_college_info(college_param)
+        if not success:
+            return jsonify("bad input")
+        else:
+            return jsonify(success)
+
+
 
 
 @app.route("/logout")

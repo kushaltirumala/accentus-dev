@@ -110,3 +110,5 @@ config.py
 build/
 
 *.swp
+
+data.csv
