@@ -83,7 +83,9 @@ def college():
         else:
             return jsonify(success)
 
-
+@app.route("/getuser", methods=["GET"])
+def get_user():
+    return jsonify(session['username'])
 
 
 @app.route("/logout")
