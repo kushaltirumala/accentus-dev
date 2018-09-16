@@ -73,8 +73,8 @@ def college():
     college_param = request.args.get("college")
     if college_param is None:
         temp = get_college_list()
-        print(temp)
-        return jsonify(temp)
+        print(jsonify(temp))
+        return jsonify(temp[1:])
     else:
         print(college_param)
         success = get_college_info(college_param)
