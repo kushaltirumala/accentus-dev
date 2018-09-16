@@ -81,6 +81,7 @@ def college():
         if not success:
             return jsonify("bad input")
         else:
+            print(jsonify(success))
             return jsonify(success)
 
 @app.route("/getuser", methods=["GET"])

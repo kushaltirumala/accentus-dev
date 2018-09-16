@@ -36,6 +36,7 @@ class CollegeBar extends React.Component {
         };
 
         this.handleOnChange = this.handleOnChange.bind(this);
+        this.createEvents = this.createEvents.bind(this);
 
     };
 
@@ -58,6 +59,7 @@ class CollegeBar extends React.Component {
 
 
     handleOnChange (event) {
+        this.createEvents(event);
         var temp = [];
         for (var i = 0; i < event.length; i++) {
             var collegeName = event[i].value;
@@ -84,9 +86,17 @@ class CollegeBar extends React.Component {
     }
 
 
-    // createEvents() {
-    //
-    // }
+    createEvents(colleges) {
+        for (var i = 0; i < colleges.length; i++) {
+            fetch("/college?college="+colleges[i].value).then( results => {
+                console.log(results);
+                return results.json()}
+            ).then(data => {
+                console.log(data);
+            })
+        }
+
+    }
 
     render() {
 
