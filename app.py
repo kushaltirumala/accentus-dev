@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 import config
 from sqlalchemy.ext.declarative import declarative_base
 from college import get_college_list, get_college_info
+import simplejson
 
 
 app = Flask(__name__)
@@ -81,8 +82,11 @@ def college():
         if not success:
             return jsonify("bad input")
         else:
+            print(success)
+            print (type(success))
+            print(simplejson.dumps(success, ignore_nan=True))
             print(jsonify(success))
-            return jsonify(success)
+            return jsonify(simplejson.dumps(success, ignore_nan=True))
 
 @app.route("/getuser", methods=["GET"])
 def get_user():

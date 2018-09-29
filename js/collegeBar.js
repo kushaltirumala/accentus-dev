@@ -90,10 +90,9 @@ class CollegeBar extends React.Component {
         for (var i = 0; i < colleges.length; i++) {
             fetch("/college?college="+colleges[i].value).then( results => {
                 console.log(results);
+                console.log("oh boy");
                 return results.json()}
-            ).then(data => {
-                console.log(data);
-            })
+            )
         }
 
     }
